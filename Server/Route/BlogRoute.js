@@ -1,0 +1,10 @@
+import express from 'express';
+import BlogPostController from '../Controller/BlogController.js';
+import {verifyAut} from '../Midldeware/Authverfication.js';
+const router =express.Router();
+router.post("/create",verifyAut,BlogPostController.articles);
+router.get("/all",verifyAut,BlogPostController.getAllBlog);
+router.get("/one/:blogId",verifyAut,BlogPostController.getOne);
+router.delete("/delete/:blogId",verifyAut,BlogPostController.deleteOne);
+router.patch("/update/:blogId",verifyAut,BlogPostController.updateBlogPost);
+export default router;
